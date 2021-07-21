@@ -1,0 +1,18 @@
+.inputfield, .inputbox
+{
+    font-size: 30px;
+}
+.inputfield
+{
+    display: flex;
+}
+label
+{
+    flex: 0 0 40%;
+    text-align: left;
+}
+.inputbox
+{
+    border-radius: 10px;
+    flex: 1;
+}

@@ -1,0 +1,38 @@
+.buttons
+{
+    background: #190061;
+    color: #ffffea;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.buttons:hover
+{
+    background: #3500d3;
+}
+.buttons:active
+{
+    background: #240090;
+}
+.smid
+{
+    padding: 15px;
+    font-size: 17px;
+}
+.slrg
+{
+    padding: 12px;
+    font-size: 25px;
+}
+.leftAlign
+{
+    text-align: left;
+}
+.rightAlign
+{
+    text-align: right;
+}
+.centerAlign
+{
+    text-align: center;
+}

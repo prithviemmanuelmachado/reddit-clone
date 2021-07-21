@@ -1,0 +1,17 @@
+.upvote
+{
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: #ffffea;
+}
+.upvote:focus
+{
+    color: #3500d3;
+}
+.count
+{
+    display: inline;
+    font-size: 18px;
+    margin-right: 10px;
+}

@@ -1,0 +1,17 @@
+.leftAlign
+{
+    text-align: left;
+}
+.rightAlign
+{
+    text-align: right;
+}
+.centerAlign
+{
+    text-align: center;
+}
+.time
+{
+    display: inline;
+    font-size: 12px;
+}

@@ -1,0 +1,42 @@
+.header
+{
+    background-color: #3500D3;
+    color: #ffffea;
+    font-size: 25px;
+    display: flex;
+}
+.headerTitle
+{
+    margin-left: 20px;
+    text-align: left;
+    font-size: 40px;
+    flex: 0 0 50%;
+}
+.navbar
+{
+   text-align: right;
+   flex: 1;
+   padding-top: 20px;
+}
+ul
+{
+    list-style: none;
+    margin-right: 20px;
+}
+ul li
+{
+    display: inline;
+    padding: 20px;
+    border-radius: 15px;
+
+}
+.link
+{
+    text-decoration: none;
+    color: #ffffea;
+}
+ul li:hover
+{
+    background: #0c0032;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
