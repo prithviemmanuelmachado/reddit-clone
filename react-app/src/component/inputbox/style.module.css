@@ -1,0 +1,8 @@
+.textbox
+{
+    font-family: Verdana;
+    font-size: 17px;
+    border-radius: 15px;
+    width: 100%;
+    resize: none;
+}

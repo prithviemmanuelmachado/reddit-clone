@@ -6,7 +6,7 @@ import './style.css';
 export default function Home(props)
 {
     return<>
-        <div className='btnLeft'>
+        <div className='leftAlign'>
             <Link to='/newPost'>
                 <Button buttonType='button' buttonText='Create a New Post' buttonOrientation='left' buttonSize='slrg' />
             </Link>
