@@ -1,0 +1,27 @@
+.sidebar
+{
+    background: #282828;
+    border: #ffffea 3px solid;
+    border-radius: 10px;
+    width: 340px;
+    margin-top: 60px;
+}
+.title
+{
+    font-size: 20px;
+    padding: 10px;
+}
+.select
+{
+    padding: 0;
+    margin-right: 0;
+}
+.option
+{
+    border-radius: 0;
+    display: block;
+}
+.option:hover
+{
+    background: #3500D3;
+}

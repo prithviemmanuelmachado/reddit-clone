@@ -1,10 +1,13 @@
 import PostContainer from '../component/postContainer';
 import { Link } from 'react-router-dom';
 import Button from '../component/button';
+import Sidebar from '../component/sidebar';
 import './style.css';
 
 export default function Home(props)
 {
+    const testsubreddits=['sub1', 'sub2', 'sub3'];
+    const testTopsubreddits=['Topsub1', 'Topsub2', 'Topsub3'];
     return<>
         <div className='flex'>
             <div className='flexLeftLarger'>
@@ -20,7 +23,8 @@ export default function Home(props)
                 <PostContainer additionalClass='margins' postTitle='Test Post' postText='Deck the halls with bows of holly, fadlalalala lalala'/>
             </div>
             <div className='flexRight'>
-
+                <Sidebar title='Subreddits you are following' selectoptions={testsubreddits}/>
+                <Sidebar title='Top Subreddits' selectoptions={testTopsubreddits}/>
             </div>
         </div>
         
