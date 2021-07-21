@@ -5,9 +5,10 @@ import Downvote from '../downvote';
 
 export default function PostContainer(props)
 {
-    const { postTitle, postText} = props;
+    const { postTitle, postText, additionalClass} = props;
+    const styles = additionalClass ? style.postContainer+" "+style[additionalClass] : style.postContainer;
     return<>
-        <div className={style.postContainer}>
+        <div className={styles}>
             <Title title={postTitle} aligndir='left' time='2/3/39 13:09'/>
             <p>{postText}</p>
             <Upvote count='20'/>

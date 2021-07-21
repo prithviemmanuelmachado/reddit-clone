@@ -9,8 +9,6 @@ import './style.css';
 export default function Login(props)
 {
     
-    const [temp1, settemp1] = useState("");
-    const [temp2, settemp2] = useState("");
     const [username, setUsername] = useState("");
     function handleUsernameChange(event)
     {
@@ -23,8 +21,8 @@ export default function Login(props)
     }
     function handleOnSubmit(event)
     {
-        settemp1(username);
-        settemp2(password);
+        console.log(username);
+        console.log(password);
     }
     return<>
         <div className="loginBox">
@@ -32,9 +30,8 @@ export default function Login(props)
             <InputField placeholder="" displayname='Username' type='text' onChange={handleUsernameChange}/><br/>
             <InputField placeholder="" displayname='Password' type='password' onChange={handlePasswordChange}/><br/><br/>
             <Button buttonType='submit' buttonText='Submit' buttonOrientation='center' onClick={handleOnSubmit} buttonSize='slrg'/><br/><br/>
-            <Link className='link' to='/signup'>Click here to Sign Up</Link>
-            <h1>{temp1}</h1>
-            <h1>{temp2}</h1>
+            <Link className='link' to='/signup'>Click here to Sign Up</Link><br/><br/>
+            
         </div>
     </>
     

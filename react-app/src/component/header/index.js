@@ -12,7 +12,7 @@ function Header(props)
         console.log(searchTerm);        
     }
     const curLoc = useLocation();
-    const searchbar = curLoc.pathname === "/" ? <SearchBar onChange={handleSearch} placeholder='Search'/>: "";
+    const searchbar = curLoc.pathname === "/" || curLoc.pathname ==='/subreddit'? <SearchBar onChange={handleSearch} placeholder='Search'/>: "";
     return<>
         <div className={style.header}>
             <Link className={style.link} to='/'><h2 className={style.headerTitle}>gettit</h2></Link>

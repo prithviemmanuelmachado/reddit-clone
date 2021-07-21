@@ -6,10 +6,6 @@ import './style.css';
 
 export default function Signup(props)
 {
-    const [temp1, settemp1] = useState("");
-    const [temp2, settemp2] = useState("");
-    const [temp3, settemp3] = useState("");
-    const [temp4, settemp4] = useState("");
     const [username, setUsername] = useState("");
     function handleUsernameChange(event)
     {
@@ -32,10 +28,10 @@ export default function Signup(props)
     }
     function handleOnSubmit(event)
     {
-        settemp1(username);
-        settemp2(password);
-        settemp3(confirmPassword);
-        settemp4(email);
+        console.log(username);
+        console.log(password);
+        console.log(confirmPassword);
+        console.log(email);
     }
     return<>
         <div className="loginBox">
@@ -45,10 +41,6 @@ export default function Signup(props)
             <InputField placeholder="" displayname='Confirm Password' type='password' onChange={handleConfirmPasswordChange}/><br/>
             <InputField placeholder="" displayname='Email' type='email' onChange={handleEmailChange}/><br/><br/>
             <Button buttonType='submit' buttonText='Submit' buttonOrientation='center' onClick={handleOnSubmit} buttonSize='slrg'/><br/><br/>
-            <h1>{temp1}</h1>
-            <h1>{temp2}</h1>
-            <h1>{temp3}</h1>
-            <h1>{temp4}</h1>
         </div>
     </>
 }

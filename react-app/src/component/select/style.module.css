@@ -1,0 +1,12 @@
+.select
+{
+    font-size: 20px;
+    background: #282828;
+    padding: 10px;
+    min-width: 300px;
+    border: #ffffea 3px solid;
+    color: #ffffea;
+    margin: auto;
+    margin-top: 50px;
+    margin-right: 90px;
+}

@@ -35,13 +35,12 @@ export default function NewPost(props)
     }
     return<>
         <div className={style.newPost}>
-            
             <InputField placeholder='' displayname='Title' type='textbox' onChange={handleTitleChange}/><br/>
-            <InputBox onChange={handleBodyChange} placeholder='Enter text' rows='10' cols=''/><br/><br/>
+            <InputBox onChange={handleBodyChange} placeholder='Enter text' rows='7' cols=''/><br/><br/>
             <div className={style.fileUpload}>
                 <input type='file' className={style.file} onChange={handleFileUpload} ref={hiddenInput}/>
-                <label><Button buttonType='button' buttonText='Upload images' onClick={handleAddImages} buttonOrientation='left' buttonSize='smid'/> </label>
-                <p>{fileName}</p>
+                <label className={style.fileBtn}><Button buttonType='button' buttonText='Upload images' onClick={handleAddImages} buttonOrientation='left' buttonSize='smid'/> </label>
+                <p className={style.filename}>{fileName}</p>
             </div>
             <Button buttonType='submit' buttonText='Submit' buttonOrientation='right' onClick={handleOnSubmit} buttonSize='smid'/>
         </div>

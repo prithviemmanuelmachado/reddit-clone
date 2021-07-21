@@ -22,3 +22,20 @@
     padding-top: 30px;
     padding-left: 85px;
 }
+.flex
+{
+    display: flex;
+    align-items: flex-start;
+}
+.flexLeftLarger
+{
+    flex: 0 0 75%;
+}
+.flexLeft
+{
+    flex: 0 0 40%;
+}
+.flexRight
+{
+    flex: 1;
+}
