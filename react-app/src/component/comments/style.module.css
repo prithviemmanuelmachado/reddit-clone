@@ -1,0 +1,16 @@
+.comment
+{
+    margin-left: 30px;
+    padding-top: 10px;
+    padding-left: 50px;
+    border-left: #ffffea 1px solid;
+}
+.commentTitle
+{
+    font-size: 17px;
+}
+.text
+{
+    padding-left: 30px;
+    font-size: 15px;
+}

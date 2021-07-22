@@ -1,0 +1,14 @@
+.commentBox
+{
+    padding-top: 20px;
+    display: flex;
+}
+.commentFlexRight
+{
+    flex: 1;
+    margin-left: 30px;
+}
+.commentFlexLeft
+{
+    flex: 0 0 80%;
+}

@@ -8,7 +8,8 @@ const align = {
 
 const size = {
     smid:style.smid,
-    slrg:style.slrg
+    slrg:style.slrg,
+    ssml:style.ssml
 };
 
 export default function Button(props)

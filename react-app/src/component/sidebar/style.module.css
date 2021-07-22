@@ -1,10 +1,11 @@
 .sidebar
 {
-    background: #190061;
+    background: #403f41;
     border: #ffffea 3px solid;
     border-radius: 10px;
-    width: 340px;
+    width: 300px;
     margin-top: 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .displayImg
 {
@@ -32,5 +33,5 @@
 }
 .option:hover
 {
-    background: #3500D3;
+    background: #0c0032;
 }
