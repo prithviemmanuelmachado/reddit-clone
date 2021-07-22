@@ -14,7 +14,8 @@ export default function Sidebar(props)
             <p className={style.title}>{title}</p>
             <ul className={style.select}>
                 {selectoptions.map(function(optionToBePrinted, index){
-                    return <li className={style.option} key={index} onClick={handleClickOption}>{optionToBePrinted}</li>
+                    console.log(optionToBePrinted.displayImg);
+                    return <li className={style.option} key={index} onClick={handleClickOption}><img src={optionToBePrinted.displayImg} className={style.displayImg} alt=">"/>{optionToBePrinted.title}</li>
                 })}
             </ul>
         </div>

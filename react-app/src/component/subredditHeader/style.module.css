@@ -1,0 +1,29 @@
+.subredditHeader
+{
+    position: relative;
+    display: block;
+    height: 350px;
+    margin-bottom: 80px;
+}
+.displayImg
+{
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+    border: #ffffea 2px solid;
+    
+}
+.displayImgContainer
+{
+    position: absolute;
+    left: 100px;
+    bottom: -75px;
+    background: #282828;
+    border-radius: 150px;
+}
+.backgroundImg
+{
+    height: 350px;
+    width: 100%;
+    opacity: 0.5;
+}

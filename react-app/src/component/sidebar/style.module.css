@@ -1,15 +1,24 @@
 .sidebar
 {
-    background: #282828;
+    background: #190061;
     border: #ffffea 3px solid;
     border-radius: 10px;
     width: 340px;
     margin-top: 60px;
 }
+.displayImg
+{
+    width: 30px;
+    height: 30px;
+    border: 1px #ffffea solid;
+    border-radius: 30px;
+    margin-right: 10px;
+}
 .title
 {
     font-size: 20px;
     padding: 10px;
+
 }
 .select
 {

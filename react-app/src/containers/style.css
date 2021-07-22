@@ -1,3 +1,12 @@
+.containerMargin
+{
+    margin-bottom: 30px;
+}
+.link
+{
+    text-decoration: none;
+    color: #ffffea;
+}
 .loginBox
 {
     background-color: #403f41;
@@ -38,4 +47,8 @@
 .flexRight
 {
     flex: 1;
+}
+.marginTop
+{
+    margin-top: 20px;
 }
