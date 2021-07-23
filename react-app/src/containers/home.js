@@ -1,6 +1,5 @@
 import PostContainer from '../component/postContainer';
 import { Link } from 'react-router-dom';
-import Button from '../component/button';
 import Sidebar from '../component/sidebar';
 import CreateNewPostMini from '../component/createNewPostMini';
 import './style.css';
@@ -20,9 +19,6 @@ export default function Home(props)
                         <Link to='/newPost' className='link'>
                             <CreateNewPostMini exstyles='small'/>
                         </Link><br/>
-                        <Link to='/subreddit'>
-                            <Button buttonType='button' buttonText='Subreddit test' buttonOrientation='left' buttonSize='slrg' />
-                        </Link>
                     </div>
             
                     <PostContainer createdBy='testUser' createdOn='12/3/2 13:33' postTitle='Test Post' postText='Deck the halls with bows of holly, fadlalalala lalala' upvote='20' downvote='30'/>

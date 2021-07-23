@@ -1,13 +1,14 @@
 import style from './style.module.css';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function Sidebar(props)
 {
+    const History = useHistory();
     const { title, selectoptions } = props;
     function handleClickOption(event)
     {
         console.log('testing');
-        <Redirect to='/subreddit'/>
+        History.push('/subreddit');
     }
     return<>
         <div className={style.sidebar}>
