@@ -7,7 +7,7 @@
     text-decoration: none;
     color: #ffffea;
 }
-.loginBox
+.loginBox, .containers
 {
     background-color: #403f41;
     border-radius: 15px;
@@ -17,9 +17,16 @@
     padding-right: 40px;
     margin: 0 auto;
     margin-top: 30px;
-    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
+}
+.loginBox
+{
+    width: 50%;
+}
+.containers
+{
+    width: 85%;
 }
 .link
 {
@@ -69,17 +76,4 @@
     margin: 0;
     border-radius: 0 15px 15px 0;
     width: 200px;
-}
-
-.select
-{
-    font-size: 20px;
-    background: #282828;
-    padding: 10px;
-    min-width: 300px;
-    border: #ffffea 3px solid;
-    color: #ffffea;
-    margin: auto;
-    margin-top: 50px;
-    margin-right: 90px;
 }

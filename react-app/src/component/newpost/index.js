@@ -66,7 +66,7 @@ export default function NewPost(props)
         <div className={style.newPost}>
             <InputField placeholder='' displayname='Title' type='textbox' onChange={handleTitleChange}/><br/>
             <InputBox onChange={handleBodyChange} placeholder='Enter text' rows='7' cols=''/><br/><br/>
-            <UploadButton hiddenInput={hiddenInput} handleFileUpload={handleFileUpload} handleAddImages={handleAddImages} fileName={fileName}/>
+            <UploadButton hiddenInput={hiddenInput} handleFileUpload={handleFileUpload} handleAddImages={handleAddImages} fileName={fileName} buttonText='Upload Image'/><br/><br/>
             <Button buttonType='submit' buttonText='Submit' buttonOrientation='right' onClick={handleOnSubmit} buttonSize='smid'/>
         </div>
     </>

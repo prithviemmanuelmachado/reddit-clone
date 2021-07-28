@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const uri ="mongodb+srv://root:root@cluster0.lhzpr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri ="";
 
 
 function init(callback)

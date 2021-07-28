@@ -5,6 +5,7 @@ import Home from './containers/home';
 import Signup from './containers/signup';
 import Subreddits from './containers/subreddit';
 import NewPostPage from './containers/newPost';
+import NewSubreddit from './containers/newSubreddit';
 import { hostname } from './containers/globals';
 
 export default function App()
@@ -29,6 +30,9 @@ export default function App()
             </Route>
             <Route exact path='/signup'>
                 <Signup/>
+            </Route>
+            <Route exact path='/newSubreddit'>
+                <NewSubreddit/>
             </Route>
             <Route path='/subreddit'>
                 {/* we can remove exact to add the name of the subreddit in the link and still match it to the subreddit but keep it last  */}
