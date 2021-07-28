@@ -5,16 +5,19 @@ import Home from './containers/home';
 import Signup from './containers/signup';
 import Subreddits from './containers/subreddit';
 import NewPostPage from './containers/newPost';
+import { hostname } from './containers/globals';
 
 export default function App()
 {
+    let isLoggedIn;
+    fetch(hostname).then(res => {
+        return res.json()
+    }).then(data =>{
+        isLoggedIn = data.isLoggedIn;
+    }).catch();
     return <>  
-        <Header/>
+        <Header isLoggedIn={isLoggedIn}/>
         <Switch>
-            <Route exact path='/subreddit'>
-                {/* we can remove exact to add the name of the subreddit in the link and still match it to the subreddit but keep it first  */}
-                <Subreddits/>
-            </Route>
             <Route exact path='/'>
                 <Home/>
             </Route>
@@ -26,6 +29,10 @@ export default function App()
             </Route>
             <Route exact path='/signup'>
                 <Signup/>
+            </Route>
+            <Route path='/subreddit'>
+                {/* we can remove exact to add the name of the subreddit in the link and still match it to the subreddit but keep it last  */}
+                <Subreddits/>
             </Route>
         </Switch>
             

@@ -52,3 +52,34 @@
 {
     margin-top: 20px;
 }
+.errorField
+{
+    position: relative;
+}
+.error
+{
+    text-align: right;
+    color: #fc3632;
+    background: #403f41;
+    position: absolute;
+    right: -300px;
+    top: 0px;
+    padding: 10px;
+    padding-right: 30px;
+    margin: 0;
+    border-radius: 0 15px 15px 0;
+    width: 200px;
+}
+
+.select
+{
+    font-size: 20px;
+    background: #282828;
+    padding: 10px;
+    min-width: 300px;
+    border: #ffffea 3px solid;
+    color: #ffffea;
+    margin: auto;
+    margin-top: 50px;
+    margin-right: 90px;
+}

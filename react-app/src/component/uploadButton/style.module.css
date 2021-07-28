@@ -1,0 +1,20 @@
+
+.file
+{
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    display: inline;
+}
+.fileUpload
+{
+    display: flex;
+}
+.fileBtn
+{
+    flex: 0 0 15%;
+}
+.filename
+{
+    flex: 1;
+}

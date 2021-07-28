@@ -5,14 +5,26 @@ import './style.css';
 
 export default function NewPostPage(props)
 {
-    const options=['Test', 'test1', 'test2'];
+    let subreddit = "default";
+    const options=[
+        'Test',
+        'Test1',
+        'Test2'];
+    function handleChange(event)
+    {
+        subreddit = event.target.value;
+    }
+    function getSubreddit()
+    {
+        return subreddit;
+    }
     return<>
         <div className='flex'>
             <div className='leftAlign flexLeft'>
                 <Title title='Create a New Post' aligndir='left'/> 
             </div>
-            <Select options={options} optionsFor='Choose a Subreddit (Ignore if none)' className='flexRight'/>
+            <Select options={options} onChanged={handleChange} optionsFor='Choose a community'/>
         </div>
-        <NewPost/>
+        <NewPost getSubreddit={getSubreddit}/>
     </>
 }

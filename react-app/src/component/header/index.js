@@ -5,6 +5,7 @@ import SearchBar from '../searchbar';
 
 function Header(props)
 {
+    const {isLoggedIn} = props;
     const [searchTerm, setSearchTerm] = useState("");
     function handleSearch(event)
     {
@@ -12,15 +13,19 @@ function Header(props)
         console.log(searchTerm);        
     }
     const curLoc = useLocation();
-    const searchbar = curLoc.pathname === "/" || curLoc.pathname ==='/subreddit'? <SearchBar onChange={handleSearch} placeholder='Search'/>: "";
+    const searchbar = curLoc.pathname !== "/login" && curLoc.pathname !=="/signup"? <SearchBar onChange={handleSearch} placeholder='Search'/>: "";
+    const createNewSubreddit = curLoc.pathname !== "/login" && curLoc.pathname !=="/signup" && curLoc.pathname !=="/newSubreddit"?<Link className={style.link} to='/newSubreddit'><li>Create Subreddit</li></Link>:'';
+
+    const loginBtn = isLoggedIn ? <Link className={style.link} to='/logout'><li>LOGOUT</li></Link> : <Link className={style.link} to='/login'><li>LOGIN</li></Link>;
     return<>
         <div className={style.header}>
             <Link className={style.link} to='/'><h2 className={style.headerTitle}>gettit</h2></Link>
             {searchbar}
             <div className={style.navbar}>
                 <ul>
+                    {createNewSubreddit}
                     <Link className={style.link} to='/'><li>HOME</li></Link>
-                    <Link className={style.link} to='/login'><li>LOGIN</li></Link>
+                    {loginBtn}
                 </ul>
             </div>
         </div>

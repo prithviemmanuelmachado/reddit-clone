@@ -9,8 +9,9 @@ import Cyber from './cybersecurity-quiz_1200x675_hero_041318.png';
 
 export default function Home(props)
 {
-    const testsubreddits=[{title : 'sub1', displayImg: Cadmus}, {title : 'sub2', displayImg: Cyber}, {title : 'sub3', displayImg: Cadmus}];
-    const testTopsubreddits=[{title : 'Topsub1', displayImg: Cyber}, {title : 'Topsub2', displayImg: Cadmus}, {title : 'Topsub3', displayImg: Cyber}];
+    
+    const testsubreddits=[{title : 'sub1', displayImg: Cadmus, subredditId: 'sub1'}, {title : 'sub2', displayImg: Cyber, subredditId: 'sub2'}, {title : 'sub3', displayImg: Cadmus, subredditId: 'sub2'}];
+    const testTopsubreddits=[{title : 'Topsub1', displayImg: Cyber, subredditId: 'Topsub1'}, {title : 'Topsub2', displayImg: Cadmus, subredditId: 'Topsub2'}, {title : 'Topsub3', displayImg: Cyber, subredditId: 'Topsub3'}];
     return<>
         <div className='containerMargin'>
             <div className='flex'>
@@ -33,4 +34,7 @@ export default function Home(props)
         </div>
         
     </>
+
+
+    
 }

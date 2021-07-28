@@ -8,6 +8,16 @@ import Comment from '../comments';
 export default function PostContainer(props)
 {
     const { postTitle, postText, createdBy, createdOn, upvote, downvote} = props;
+    //generate a new comment Id
+    let commentId;
+
+    function submitComment(commentId)
+    {
+        return function()
+        {
+            //post new comment here based on commentId
+        }
+    }
     
     return<>
         <div className={style.postContainer}>
@@ -15,10 +25,10 @@ export default function PostContainer(props)
             <p>{postText}</p>
             <Upvote count={upvote}/>
             <Downvote count={downvote}/><br/><br/>
-            <NewComment/>
+            <NewComment submitComment={submitComment} commentId={commentId}/>
             <br/>
             
-            <Comment createdBy='testUser2' createdOn='6/7/2022 20:22' text='Jingel bells jingel bells jingel all the way'/>
+            <Comment createdBy='testUser2' createdOn='6/7/2022 20:22' text='Jingel bells jingel bells jingel all the way' commentId=''/>
         </div>
     </>
 }
