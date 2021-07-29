@@ -9,9 +9,30 @@ import './style.css';
 
 export default function NewSubreddit(props)
 {
+    const History = useHistory();
     function handleOnSubmit(event)
     {
-
+        const data = new FormData();
+        data.append('title',title);
+        console.log("title = ", title);
+        if(fileDisplayImage)
+            data.append('displayImage', fileDisplayImage);
+        if(fileBackgroundImage)
+            data.append('backgroundImage', fileBackgroundImage);
+        console.log("data title = ",data.get('title'));
+        const requestOptions = {
+            method: 'POST',
+            body: data
+        };
+        const endpoint=hostname+'/newSubreddit';
+        fetch(endpoint, requestOptions)
+        .then(res => {
+            return res.json()
+        }).then(data => {
+            if(data.status)
+                History.push('/');
+        })
+        .catch(err => console.log(err));
     }
     const [title, setTitle] = useState("");
     function handleTitleChange(event)

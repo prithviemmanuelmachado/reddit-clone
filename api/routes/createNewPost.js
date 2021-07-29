@@ -10,7 +10,6 @@ router.post("/", upload.single('image'), function(req, res){
     const date = new Date();
     const createdBy = 100000000001; // add the profile id here using the cookie here
     const filename = req.file ? req.file.filename : 'none';
-    console.log("req.body ",req.body);
     const newPost = new Posts({
         title : req.body.title,
         text : req.body.text,

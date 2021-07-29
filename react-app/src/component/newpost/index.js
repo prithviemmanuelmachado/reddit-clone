@@ -1,6 +1,7 @@
 import style from './style.module.css';
 import { useRef, useState } from 'react';
 import InputField from '../input';
+import { useHistory } from 'react-router-dom';
 import Button from '../button';
 import InputBox from '../inputbox';
 import UploadButton from '../uploadButton';
@@ -8,6 +9,7 @@ import { hostname } from '../../containers/globals';
 
 export default function NewPost(props)
 {
+    const History = useHistory();
     const {getSubreddit} = props;
     const hiddenInput = useRef(null);
     const [fileName, setFileNames] = useState("");
