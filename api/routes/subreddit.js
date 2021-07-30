@@ -4,9 +4,28 @@ const multer = require('multer');
 const cookie_parser = require('cookie-parser');
 
 router.use(cookie_parser());
-var upload = multer({ dest: 'static/images/' });
+const storage = multer.diskStorage({
+    destination: (req, file, callback)=>{
+        callback(null, 'static/images/');
+    },
+    filename: (req, file, callback)=>{
+        callback(null, file.originalname);
+    }
+});
+var upload = multer({ storage : storage });
 
 var Subreddit = require("../models/subreddit");
+
+router.get('/', async function(req, res){
+    const subreddits = await Subreddit.find().limit(10);
+    res.json(subreddits);
+});
+
+router.get('/getImage', function(req, res){
+    let image = req.body.image;
+    console.log(image);
+    res.sendFile(image);
+});
 
 router.post('/', upload.fields([{ name : 'displayImage', maxCount : 1}, { name : 'backgroundImage', maxCount : 1}]), async function(req, res){
     

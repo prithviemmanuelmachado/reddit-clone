@@ -24,7 +24,7 @@ export default function NewSubreddit(props)
             method: 'POST',
             body: data
         };
-        const endpoint=hostname+'/newSubreddit';
+        const endpoint=hostname+'/subreddit';
         fetch(endpoint, requestOptions)
         .then(res => {
             return res.json()
