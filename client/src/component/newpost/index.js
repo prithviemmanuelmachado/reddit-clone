@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 import Button from '../button';
 import InputBox from '../inputbox';
 import UploadButton from '../uploadButton';
-import { hostname } from '../../containers/globals';
 
 export default function NewPost(props)
 {
@@ -31,13 +30,11 @@ export default function NewPost(props)
                 method: 'POST',
                 body: data
             };
-            
-            const endpoint=hostname+'/createNewPost';
-            fetch(endpoint, requestOptions)
+            fetch('/createNewPost', requestOptions)
             .then(res => {
-                return res.json()
+                return res.json();
             }).then(data => {
-                console.log(data._id);
+                console.log("data from new post = ",data);
                 if(data.error)
                     console.log(data.error);
                 else

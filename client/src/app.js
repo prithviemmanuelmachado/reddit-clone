@@ -6,12 +6,11 @@ import Signup from './containers/signup';
 import Subreddits from './containers/subreddit';
 import NewPostPage from './containers/newPost';
 import NewSubreddit from './containers/newSubreddit';
-import { hostname } from './containers/globals';
 
 export default function App()
 {
     let isLoggedIn;
-    fetch(hostname).then(res => {
+    fetch('/').then(res => {
         return res.json()
     }).then(data =>{
         isLoggedIn = data.isLoggedIn;

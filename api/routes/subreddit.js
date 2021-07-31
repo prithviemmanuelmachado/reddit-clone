@@ -21,10 +21,10 @@ router.get('/', async function(req, res){
     res.json(subreddits);
 });
 
-router.get('/getImage', function(req, res){
-    let image = req.body.image;
-    console.log(image);
-    res.sendFile(image);
+router.post('/getSubreddit', async function(req, res){
+    const id = req.body.id;
+    const subreddit = await Subreddit.find({_id:id});
+    res.json(subreddit);
 });
 
 router.post('/', upload.fields([{ name : 'displayImage', maxCount : 1}, { name : 'backgroundImage', maxCount : 1}]), async function(req, res){

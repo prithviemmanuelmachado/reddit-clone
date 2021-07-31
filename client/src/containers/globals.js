@@ -1,2 +1,0 @@
-const hostname = '';
-export {hostname};

@@ -7,11 +7,17 @@ import Comment from '../comments';
 
 export default function PostContainer(props)
 {
-    const { postTitle, postText, createdBy, createdOn, upvote, downvote} = props;
-    //generate a new comment Id
-    let commentId;
-
-    function submitComment(commentId)
+    const { postTitle, postText, image, createdBy, createdOn, upvote, downvote, postId} = props;
+    const createdOnArray = createdOn ? createdOn.split("T"):"";
+    const time = createdOnArray[1] ? createdOnArray[1].split("."):"";
+    const createdOnMod = createdOnArray[0]+" | "+time[0];
+    const imgUrl = '/images/'+image;
+    let img;
+    if(image!='none')
+        img = <>
+            <img src={imgUrl} className={style.img} /><br/><br/>
+        </>;
+    function submitComment()
     {
         return function()
         {
@@ -20,12 +26,13 @@ export default function PostContainer(props)
     }
     
     return<>
-        <div className={style.postContainer}>
-            <Title title={postTitle} aligndir='left' time={createdOn} by={createdBy}/>
-            <p>{postText}</p>
+        <div className={style.postContainer} key={postId}>
+            <Title title={postTitle} aligndir='left' time={createdOnMod} by={createdBy}/>
+            <p>{postText}</p><br/>
+            {img}
             <Upvote count={upvote}/>
             <Downvote count={downvote}/><br/><br/>
-            <NewComment submitComment={submitComment} commentId={commentId}/>
+            <NewComment submitComment={submitComment} />
             <br/>
             
             <Comment createdBy='testUser2' createdOn='6/7/2022 20:22' text='Jingel bells jingel bells jingel all the way' commentId=''/>

@@ -3,7 +3,6 @@ import Title from '../component/title';
 import { useHistory } from 'react-router-dom';
 import Button from '../component/button';
 import UploadButton from '../component/uploadButton';
-import { hostname } from './globals';
 import { useState, useRef } from 'react';
 import './style.css';
 
@@ -24,8 +23,7 @@ export default function NewSubreddit(props)
             method: 'POST',
             body: data
         };
-        const endpoint=hostname+'/subreddit';
-        fetch(endpoint, requestOptions)
+        fetch('/subreddit', requestOptions)
         .then(res => {
             return res.json()
         }).then(data => {

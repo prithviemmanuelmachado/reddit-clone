@@ -1,19 +1,14 @@
 import PostContainer from '../component/postContainer';
 import { Link } from 'react-router-dom';
 import Sidebar from '../component/sidebar';
-import {hostname} from './globals';
 import CreateNewPostMini from '../component/createNewPostMini';
 import { useEffect, useState } from 'react';
 import './style.css';
 
-import Cadmus from './cadmus logo.png';
-import Cyber from './cybersecurity-quiz_1200x675_hero_041318.png';
-
 async function GetSubreddits()
 {
     let subreddits;
-    const endpoint = hostname+'/subreddit';
-    await fetch(endpoint).then((res)=>{
+    await fetch('/subreddit').then((res)=>{
         return res.json();
     }).then((data)=>{
         subreddits = data;
@@ -23,18 +18,37 @@ async function GetSubreddits()
     
     return subreddits;
 }
+async function GetPosts()
+{
+    let posts;
+    await fetch('/posts').then((res)=>{
+        return res.json();
+    }).then((data)=>{
+        posts = data;
+    }).catch((err)=>{
+        console.log(err);
+    });
+    
+    return posts;
+}
 
 export default function Home(props)
 {
-    const defaultSub = { title : 'Loading', displayImage : Cyber};
+    const defaultSub = { title : 'Loading', displayImage : 'loading'};
     const [subreddits, setSubreddits] = useState([defaultSub]);
+    const [topSubreddits, setTopSubreddits] = useState([defaultSub]);
+    const [posts, setPosts] = useState([defaultSub]);
     useEffect(function(){
         GetSubreddits().then((data)=>{
             setSubreddits(data);
         });
+        GetPosts().then((data)=>{
+            setPosts(data);
+        });
+
     }, []);
     
-    const testTopsubreddits=[{title : 'Topsub1', displayImg: Cyber, subredditId: 'Topsub1'}, {title : 'Topsub2', displayImg: Cadmus, subredditId: 'Topsub2'}, {title : 'Topsub3', displayImg: Cyber, subredditId: 'Topsub3'}];
+    
     return<>
         <div className='containerMargin'>
             <div className='flex'>
@@ -45,13 +59,20 @@ export default function Home(props)
                         </Link><br/>
                     </div>
                 
-                    <PostContainer createdBy='testUser' createdOn='12/3/2 13:33' postTitle='Test Post' postText='Deck the halls with bows of holly, fadlalalala lalala' upvote='20' downvote='30'/>
-                    <PostContainer createdBy='testUser' createdOn='12/3/2 13:33' postTitle='Test Post' postText='Deck the halls with bows of holly, fadlalalala lalala' upvote='20' downvote='30'/>
-                    <PostContainer createdBy='testUser' createdOn='12/3/2 13:33' postTitle='Test Post' postText='Deck the halls with bows of holly, fadlalalala lalala' upvote='20' downvote='30'/>
+                    {
+                        posts.map(function(post, index){
+                            console.log("post = ", post);
+                            console.log("post image = ", post.imageName);
+                            return <>
+                                <PostContainer createdBy={post.createdBy} createdOn={post.createdOn} postTitle={post.title} postText={post.text} upvote={post.upVote} downvote={post.downVote} postId={post._id} image={post.imageName}/>
+                            </>
+                        })
+                    }
+                    
                 </div>
                 <div className='flexRight'>
                     <Sidebar title='Subreddits you are following' selectoptions={subreddits}/>
-                    <Sidebar title='Top Subreddits' selectoptions={testTopsubreddits}/>
+                    <Sidebar title='Top Subreddits' selectoptions={topSubreddits}/>
                 </div>
             </div>
         </div>

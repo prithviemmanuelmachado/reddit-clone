@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import InputField from '../component/input';
 import Title from '../component/title';
 import Button from '../component/button';
-import { hostname } from './globals';
 import './style.css';
 
 export default function Signup(props)
@@ -46,8 +45,7 @@ export default function Signup(props)
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username:username, password:password, email:email })
                 };
-                const endpoint=hostname+'/createNewUser';
-                fetch(endpoint, requestOptions)
+                fetch('/createNewUser', requestOptions)
                 .then(res => {
                     return res.json()
                 }).then(data => {

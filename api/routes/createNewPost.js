@@ -22,7 +22,7 @@ router.post("/", upload.single('image'), function(req, res){
     });
     newPost.save().then(()=>{
         console.log('Posted');
-        res.json()
+        res.json({posted: 'posted'});
     }).catch((err)=>{
         console.log(err);
     });

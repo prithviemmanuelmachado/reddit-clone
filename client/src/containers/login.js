@@ -3,7 +3,6 @@ import { Link, useHistory } from 'react-router-dom';
 import InputField from '../component/input';
 import Title from '../component/title';
 import Button from '../component/button';
-import { hostname } from './globals';
 import './style.css';
 
 
@@ -39,8 +38,7 @@ export default function Login(props)
                 credentials : 'include'
             };
             
-            const endpoint=hostname+'/login';
-            fetch(endpoint, requestOptions)
+            fetch('/login', requestOptions)
             .then(res => {
                 return res.json()
             }).then(data => {

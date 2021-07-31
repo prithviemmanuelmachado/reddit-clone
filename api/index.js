@@ -12,7 +12,7 @@ const port = process.env.PORT;
 app.use(cors({origin : 'http://localhost:3000'}));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, '/static')));
 app.use(router);
 
 database(function(err){
