@@ -8,7 +8,7 @@ router.get('/', function(req, res){
     const cookie = req.cookies.jwt;
     if(cookie)
     {
-        console.log("isLoggedIn = ", cookie);
+        
         res.json({isLoggedIn : true});
     }
     else

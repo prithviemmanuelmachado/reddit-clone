@@ -5,6 +5,6 @@ const upvoteSchema = new mongoose.Schema({
   votedBy : String
 });
 
-const Upvote = mongoose.model('upvotes', upvoteschema);
+const Upvotes = mongoose.model('upvotes', upvoteSchema);
 
-module.exports = Upvote;
+module.exports = Upvotes;

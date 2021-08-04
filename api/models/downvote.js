@@ -5,6 +5,6 @@ const downvoteSchema = new mongoose.Schema({
   votedBy : String
 });
 
-const Downvote = mongoose.model('downvotes', downvoteschema);
+const Downvote = mongoose.model('downvotes', downvoteSchema);
 
 module.exports = Downvote;

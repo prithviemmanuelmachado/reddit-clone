@@ -7,6 +7,7 @@ function init(callback)
 {
   mongoose.connect(uri, 
   {
+    useFindAndModify: false,
     useNewUrlParser: true, 
     useUnifiedTopology: true
   });

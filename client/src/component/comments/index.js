@@ -1,6 +1,4 @@
 import style from './style.module.css';
-import Upvote from '../upvote';
-import Downvote from '../downvote';
 import NewComment from '../newComment';
 import { useEffect, useState } from 'react';
 
@@ -44,8 +42,6 @@ export default function Comment(props)
             </div><br/>
             <div className={style.text}>
                 {text}<br/><br/>
-                <Upvote count='26'/>
-                <Downvote count='18' />
                 <NewComment postId={commentId}/>
                 {comments.map(function(object, index){
                     const subcreatedOnArray = object.createdOn ? object.createdOn.split("T"):"";
@@ -60,8 +56,6 @@ export default function Comment(props)
                             </div><br/>
                             <div className={style.text}>
                                 {object.text}<br/>
-                                <Upvote count='26'/>
-                                <Downvote count='18'/>
                             </div>
                             
                         </div>
