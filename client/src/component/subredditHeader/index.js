@@ -2,8 +2,7 @@ import style from './style.module.css';
 
 export default function SubredditHeader(props)
 {
-    const {backgroundImg, displayImg} = props
-    console.log("background = "+backgroundImg);
+    const {backgroundImg, displayImg} = props;
     const bImgUrl = '/images/'+backgroundImg;
     const dImgUrl = '/images/'+displayImg;
     return<>

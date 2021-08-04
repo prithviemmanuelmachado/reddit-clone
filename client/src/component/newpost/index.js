@@ -34,7 +34,6 @@ export default function NewPost(props)
             .then(res => {
                 return res.json();
             }).then(data => {
-                console.log("data from new post = ",data);
                 if(data.error)
                     console.log(data.error);
                 else

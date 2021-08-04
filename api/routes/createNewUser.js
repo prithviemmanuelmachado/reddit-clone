@@ -3,7 +3,6 @@ const router = express.Router();
 const cookie_parser = require('cookie-parser');
 const jwtCookies = require('../models/createCookies')
 
-const jwt_secret = 'CreatingNewUser';
 router.use(cookie_parser());
 
 var Profiles = require("../models/profiles");
@@ -44,7 +43,7 @@ router.post('/', async function(req, res){
         console.log(newUser);
         newUser.save().then(()=>{
             console.log("New User Entered");
-            const token = jwtCookies(newUser._id, jwt_secret);
+            const token = jwtCookies(newUser._id);
             res.cookie('jwt',token,{
                 maxAge: 2 * 60 * 60 * 1000, 
                 httpOnly: false,

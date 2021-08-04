@@ -34,19 +34,17 @@ export default function Login(props)
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
-                credentials : 'include'
+                body: JSON.stringify(data)
             };
             
             fetch('/login', requestOptions)
             .then(res => {
                 return res.json()
             }).then(data => {
-                console.log(data._id);
                 if(data.error)
                     setUsernameError(<p className="error">{data.error}</p>);
                 else
-                    History.push('/');                        
+                    History.push('/');                       
             })
             .catch(err => console.log(err));
         }       

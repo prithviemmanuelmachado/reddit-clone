@@ -1,16 +1,40 @@
 import style from './style.module.css';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import InputField from '../input';
 import Button from '../button';
 
 export default function NewComment(props)
 {
-    const {submitComment, commentId} =props
+    const History = useHistory();
+    const {postId} = props;
     const [comment, setComment] = useState("");
     function handleCommentChange(event)
     {
         setComment(event.target.value);
-        console.log(comment);
+    }
+    async function submitComment(event)
+    {
+        if(comment!=="")
+        {
+            const data = {comment : comment, commentedOn : postId}
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            };
+            
+            await fetch('/comments', requestOptions).then((res) => {
+                return res.json();
+            }).then((data) => {
+                if(data.isLoggedIn===false)
+                    History.push('/login');
+                else
+                {
+                    setComment("");
+                }
+            }).catch(err => console.log(err));
+        }
     }
     
     return<>
@@ -21,7 +45,7 @@ export default function NewComment(props)
             </div>
             <div className={style.commentFlexRight}>
                         
-                <Button buttonType='button' buttonText='Comment' buttonOrientation='left' buttonSize='ssml' onClick={submitComment(commentId)}/>
+                <Button buttonType='button' buttonText='Comment' buttonOrientation='left' buttonSize='ssml' onClick={submitComment}/>
             </div>
         </div>
     </>

@@ -5,7 +5,6 @@ export default function Sidebar(props)
 {
     const History = useHistory();
     const { title, selectoptions } = props;
-    console.log("select options  = ", selectoptions);
     function handleClickOption(subredditId)
     {
         if(subredditId)

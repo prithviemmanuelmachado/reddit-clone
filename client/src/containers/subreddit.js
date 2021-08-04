@@ -12,7 +12,6 @@ export default function Subreddits(props)
     //use the Subreddit id here to get the subreddit info
     const CurPage = useLocation();
     const curSubredditId = CurPage.pathname.substr(11);
-    console.log(curSubredditId);
 
     const [page, setPage] = useState([]);
     const requestOptions = {
@@ -42,7 +41,6 @@ export default function Subreddits(props)
         setFollow(temp);
     }
 
-    console.log("page = ", page[0]);
     const backgroundImage = page.backgroundImage;
     const displayImage = page.displayImage;
     const title = page.title;

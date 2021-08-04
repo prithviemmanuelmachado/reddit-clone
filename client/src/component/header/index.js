@@ -1,16 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './style.module.css';
 import {Link, useLocation} from 'react-router-dom';
 import SearchBar from '../searchbar';
 
 function Header(props)
 {
-    const {isLoggedIn} = props;
+    const [isLoggedIn, setIsLoggedIn] = useState("");
+    const verify = async() => {
+        await fetch('/verify').then(res => {
+            return res.json()
+        }).then(data =>{
+            setIsLoggedIn(data.isLoggedIn);
+        }).catch(err=>console.log(err));
+    }
+    useEffect(()=>{
+        verify();
+    });
+
     const [searchTerm, setSearchTerm] = useState("");
     function handleSearch(event)
     {
-        setSearchTerm(event.target.value);
-        console.log(searchTerm);        
+        setSearchTerm(event.target.value);        
     }
     const curLoc = useLocation();
     const searchbar = curLoc.pathname !== "/login" && curLoc.pathname !=="/signup"? <SearchBar onChange={handleSearch} placeholder='Search'/>: "";

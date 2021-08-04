@@ -34,7 +34,8 @@ router.post('/', upload.fields([{ name : 'displayImage', maxCount : 1}, { name :
     const newSubreddit = new Subreddit({
         title:req.body.title,
         displayImage:displayImage,
-        backgroundImage:backgroundImage
+        backgroundImage:backgroundImage,
+        followerCount:1
 
     });
     newSubreddit.save().then(()=>{

@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const cookie_parser = require('cookie-parser');
-const jwtCookies = require('../models/createCookies')
-
-const jwt_secret = 'LoginExisitingUser';
+const jwtCookies = require('../models/createCookies');
 router.use(cookie_parser());
 
-var Profiles = require("../models/profiles");
+const Profiles = require("../models/profiles");
 
 
 router.post('/', async function(req, res){
@@ -16,7 +14,7 @@ router.post('/', async function(req, res){
     const user = await Profiles.find({username : username, password : password});
     if(user.length!=0)
     {
-        const token = jwtCookies(user[0]._id, jwt_secret);
+        const token = jwtCookies(user[0]._id);
         console.log(user);
         res.cookie('jwt',token,{
             maxAge: 2 * 60 * 60 * 1000, 

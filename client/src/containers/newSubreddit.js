@@ -13,12 +13,10 @@ export default function NewSubreddit(props)
     {
         const data = new FormData();
         data.append('title',title);
-        console.log("title = ", title);
         if(fileDisplayImage)
             data.append('displayImage', fileDisplayImage);
         if(fileBackgroundImage)
             data.append('backgroundImage', fileBackgroundImage);
-        console.log("data title = ",data.get('title'));
         const requestOptions = {
             method: 'POST',
             body: data
