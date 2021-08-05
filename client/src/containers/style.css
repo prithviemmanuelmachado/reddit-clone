@@ -7,7 +7,7 @@
     text-decoration: none;
     color: #ffffea;
 }
-.loginBox, .containers
+.loginBox, .containers, .searchItems
 {
     background-color: #403f41;
     border-radius: 15px;
@@ -27,6 +27,30 @@
 .containers
 {
     width: 85%;
+}
+.searchItems
+{
+    width: 70%;
+    font-size: 20px;
+    text-align: left;
+}
+.displayImages
+{
+    height: 50px;
+    width: 50px;
+    margin-right: 120px;
+    border-radius: 25px;
+    border: #ffffea solid 2px;
+}
+.isEmpty
+{
+    text-align: center;
+    font-size: 40px;
+    padding-top: 50px;
+}
+.searchItems p
+{
+    font-size: 15px;
 }
 .link
 {

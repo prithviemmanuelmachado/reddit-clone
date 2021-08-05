@@ -7,6 +7,7 @@ import Signup from './containers/signup';
 import Subreddits from './containers/subreddit';
 import NewPostPage from './containers/newPost';
 import NewSubreddit from './containers/newSubreddit';
+import Search from './containers/search';
 
 export default function App()
 {
@@ -28,6 +29,9 @@ export default function App()
             </Route>
             <Route exact path='/newSubreddit'>
                 <NewSubreddit/>
+            </Route>
+            <Route path='/search'>
+                <Search/>
             </Route>
             <Route path='/newPost'>
                 <NewPostPage/>

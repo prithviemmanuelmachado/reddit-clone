@@ -3,6 +3,7 @@ import style from './style.module.css';
 import {Link, useLocation} from 'react-router-dom';
 import SearchBar from '../searchbar';
 
+
 function Header(props)
 {
     const [isLoggedIn, setIsLoggedIn] = useState("");
@@ -16,14 +17,10 @@ function Header(props)
     useEffect(()=>{
         verify();
     });
-
-    const [searchTerm, setSearchTerm] = useState("");
-    function handleSearch(event)
-    {
-        setSearchTerm(event.target.value);        
-    }
+    
+    
     const curLoc = useLocation();
-    const searchbar = curLoc.pathname !== "/login" && curLoc.pathname !=="/signup"? <SearchBar onChange={handleSearch} placeholder='Search'/>: "";
+    const searchbar = curLoc.pathname !== "/login" && curLoc.pathname !=="/signup"? <SearchBar placeholder='Search'/>: "";
     const createNewSubreddit = curLoc.pathname !== "/login" && curLoc.pathname !=="/signup" && curLoc.pathname !=="/newSubreddit"?<Link className={style.link} to='/newSubreddit'><li>Create Subreddit</li></Link>:'';
 
     const loginBtn = isLoggedIn ? <Link className={style.link} to='/logout'><li>LOGOUT</li></Link> : <Link className={style.link} to='/login'><li>LOGIN</li></Link>;
