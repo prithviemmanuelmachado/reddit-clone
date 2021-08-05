@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const cookie_parser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+const jwt_secret = 'assdgasetdfn32124n';
+
 
 router.use(cookie_parser());
 const storage = multer.diskStorage({
@@ -14,7 +17,9 @@ const storage = multer.diskStorage({
 });
 var upload = multer({ storage : storage });
 
-var Subreddit = require("../models/subreddit");
+const Subreddit = require("../models/subreddit");
+const Following = require("../models/following");
+const Posts = require("../models/posts");
 
 router.get('/', async function(req, res){
     const subreddits = await Subreddit.find().limit(10);
@@ -23,8 +28,47 @@ router.get('/', async function(req, res){
 
 router.post('/getSubreddit', async function(req, res){
     const id = req.body.id;
-    const subreddit = await Subreddit.find({_id:id});
+    const subreddit = await Subreddit.findOne({_id:id});
     res.json(subreddit);
+});
+
+router.post('/getPosts', async function(req, res){
+    const id = req.body.id;
+    const posts = await Posts.find({subreddit:id}).sort({createdOn: -1});
+    res.json(posts);
+});
+
+router.get('/getFollowedSubreddits', async function(req, res){
+    const token = req.cookies.jwt;
+    if(token)
+    {
+        jwt.verify(token, jwt_secret, async(err, decodedToken)=>{
+            const following = await Following.find({userId : decodedToken.userId});
+            if(following.length!==0)
+            {
+                let subredditIds=[];
+                following.forEach((data, index)=>{
+                    subredditIds.push(data.subredditId)
+                });
+                const subreddits = await Subreddit.find({_id : {$in : subredditIds}});
+                res.json(subreddits);
+            }
+            else
+            {
+                res.json([{title : "None", displayImage : 'loading'}]);
+            }
+        });
+    }
+    else
+    {
+        res.json([{title : "None", displayImage : 'loading'}]);
+    }
+});
+
+
+router.get('/getTopSubreddits', async function(req, res){
+    const subreddits = await Subreddit.find().sort({followerCount : -1}).limit(10);
+    res.json(subreddits); 
 });
 
 router.post('/', upload.fields([{ name : 'displayImage', maxCount : 1}, { name : 'backgroundImage', maxCount : 1}]), async function(req, res){

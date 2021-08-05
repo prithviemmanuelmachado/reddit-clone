@@ -9,4 +9,10 @@
     margin: auto;
     margin-top: 50px;
     margin-right: 90px;
+    position: absolute;
+    z-index: 2;
+    right: 40px;
+    top: 115px;
+
 }
+

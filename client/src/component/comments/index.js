@@ -42,7 +42,7 @@ export default function Comment(props)
             </div><br/>
             <div className={style.text}>
                 {text}<br/><br/>
-                <NewComment postId={commentId}/>
+                <NewComment postId={commentId} existingComments={comments} setExistingComment={setComments} />
                 {comments.map(function(object, index){
                     const subcreatedOnArray = object.createdOn ? object.createdOn.split("T"):"";
                     const subtime = subcreatedOnArray[1] ? subcreatedOnArray[1].split("."):"";
@@ -50,7 +50,7 @@ export default function Comment(props)
                     const subCommentTitle = ""+object.createdByUsername+"\t Created on : "+subcreatedOnMod;
                     return<>
                         
-                        <div className={style.comment} key={index}>
+                        <div className={style.comment} key={object._id}>
                             <div className={style.commentTitle} >
                                 {subCommentTitle}
                             </div><br/>

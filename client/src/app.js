@@ -17,9 +17,6 @@ export default function App()
             <Route exact path='/'>
                 <Home/>
             </Route>
-            <Route exact path='/newPost'>
-                <NewPostPage/>
-            </Route>
             <Route exact path='/logout'>
                 <Logout/>
             </Route>
@@ -32,8 +29,10 @@ export default function App()
             <Route exact path='/newSubreddit'>
                 <NewSubreddit/>
             </Route>
+            <Route path='/newPost'>
+                <NewPostPage/>
+            </Route>
             <Route path='/subreddit'>
-                {/* we can remove exact to add the name of the subreddit in the link and still match it to the subreddit but keep it last  */}
                 <Subreddits/>
             </Route>
         </Switch>

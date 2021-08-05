@@ -7,7 +7,7 @@ import './style.css';
 
 async function GetSubreddits(setSubreddits)
 {
-    await fetch('/subreddit').then((res)=>{
+    await fetch('/subreddit/getFollowedSubreddits').then((res)=>{
         return res.json();
     }).then((data)=>{
         setSubreddits(data);
@@ -15,6 +15,19 @@ async function GetSubreddits(setSubreddits)
         console.log(err);
     });
 }
+
+async function GetTopSubreddits(setTopSubreddits)
+{
+    await fetch('/subreddit/getTopSubreddits').then((res)=>{
+        return res.json();
+    }).then((data)=>{
+        setTopSubreddits(data);
+    }).catch((err)=>{
+        console.log(err);
+    });
+}
+
+
 async function GetPosts(setPosts)
 {
     await fetch('/posts').then((res)=>{
@@ -34,6 +47,7 @@ export default function Home(props)
     const [posts, setPosts] = useState([defaultSub]);
     useEffect(function(){
         GetSubreddits(setSubreddits);
+        GetTopSubreddits(setTopSubreddits);
         GetPosts(setPosts);
     }, []);
     

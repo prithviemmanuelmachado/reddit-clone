@@ -41,7 +41,7 @@ router.post('/', async function(req, res){
             });
             newComment.save().then(()=>{
                 console.log("commented");
-                res.json({comment : "success"});
+                res.json(newComment);
             }).catch((err)=>
             {
                 console.log(err);

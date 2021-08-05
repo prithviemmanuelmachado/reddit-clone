@@ -86,7 +86,8 @@ export default function PostContainer(props)
         commentId:""
     };
     
-    const [comments, setComments] = useState([defaultComment]);    
+    const [comments, setComments] = useState([defaultComment]); 
+    console.log(comments);   
     useEffect(function(){
         getCommets(postId, setComments);
     },[]);    
@@ -107,7 +108,7 @@ export default function PostContainer(props)
             {img}
             <Upvote count={upvotecount} setvotes={setUpvote}/>
             <Downvote count={downvotecount} setvotes={setDownvote}/><br/><br/>
-            <NewComment postId={postId}/>
+            <NewComment postId={postId} existingComments={comments} setExistingComment={setComments}/>
             <br/>
             {comments.map(function(object, index){
                 return<>

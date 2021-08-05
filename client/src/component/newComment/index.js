@@ -7,7 +7,7 @@ import Button from '../button';
 export default function NewComment(props)
 {
     const History = useHistory();
-    const {postId} = props;
+    const {postId, existingComments, setExistingComment} = props;
     const [comment, setComment] = useState("");
     function handleCommentChange(event)
     {
@@ -32,6 +32,9 @@ export default function NewComment(props)
                 else
                 {
                     setComment("");
+                    const temp = [...existingComments];
+                    temp.push(data);
+                    setExistingComment(temp);
                 }
             }).catch(err => console.log(err));
         }
