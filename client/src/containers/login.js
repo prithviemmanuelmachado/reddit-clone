@@ -27,7 +27,7 @@ export default function Login(props)
             username : username,
             password : password
         };
-        if(username || password )
+        if(username!=="" && password!=="" )
         {
             setPasswordError("");
             setUsernameError("");
@@ -50,9 +50,9 @@ export default function Login(props)
         }       
         else
         {
-            if(!username)
+            if(username==="")
                 setUsernameError(<p className="error">Enter Username</p>);
-            if(!password)
+            if(password==="")
                 setPasswordError(<p className="error">Enter Passwords</p>);
             
         }

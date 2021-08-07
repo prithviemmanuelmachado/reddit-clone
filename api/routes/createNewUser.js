@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const cookie_parser = require('cookie-parser');
-const jwtCookies = require('../models/createCookies')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+const jwtCookies = require('../models/createCookies');
 
 router.use(cookie_parser());
 
@@ -35,9 +37,11 @@ router.post('/', async function(req, res){
     if(Object.keys(errors).length==0)
     {
         
+        const hash = await bcrypt.hash(req.body.password, saltRounds);
+        
         const newUser = new Profiles({
             username:req.body.username,
-            password:req.body.password,
+            password:hash,
             email:req.body.email
         });
         console.log(newUser);

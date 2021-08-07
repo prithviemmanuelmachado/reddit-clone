@@ -67,7 +67,9 @@ export default function Home(props)
                             if(index!==0)
                             {
                                 return <>
-                                    <PostContainer createdBy={post.createdByUsername} createdOn={post.createdOn} postTitle={post.title} postText={post.text} upvote={post.upVote} downvote={post.downVote} postId={post._id} image={post.imageName}/>
+                                    <div key={post._id}>
+                                        <PostContainer createdBy={post.createdByUsername} createdOn={post.createdOn} postTitle={post.title} postText={post.text} upvote={post.upVote} downvote={post.downVote} postId={post._id} image={post.imageName}/>
+                                    </div>
                                 </>
                             }
                         })

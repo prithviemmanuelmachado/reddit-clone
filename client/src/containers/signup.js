@@ -33,45 +33,59 @@ export default function Signup(props)
     }
     function handleOnSubmit(event)
     {
-        if(username || password || email || confirmPassword)
+        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const passwordformat = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+        if(username!=="" && password!=="" && email!=="" && confirmPassword!=="")
         {
             if(confirmPassword === password)
             {
-                setPasswordError("");
-                setEmailError("");
-                setUsernameError("");
-                const requestOptions = {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username:username, password:password, email:email })
-                };
-                fetch('/createNewUser', requestOptions)
-                .then(res => {
-                    return res.json()
-                }).then(data => {
-                    if(data.errorEmail)
-                        setEmailError(<p className="error">{data.errorEmail}</p>);
-                    if(data.errorUsername)
-                        setUsernameError(<p className="error">{data.errorUsername}</p>);
-                    if(data._id)
-                        History.push('/');                        
-                })
-                .catch(err => console.log(err));
+                const isMailValid = mailformat.test(email);
+                const isPassValid = passwordformat.test(password);
+                if(isMailValid === false || isPassValid === false)
+                {
+                    if(isMailValid === false)
+                        setEmailError(<p className="error">Invalid Email</p>);
+                    if(isPassValid === false)
+                        setPasswordError(<p className="error">Password must be between 8 to 15 characters and must contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character</p>);
+                }
+                else
+                {
+                    setPasswordError("");
+                    setEmailError("");
+                    setUsernameError("");
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username:username, password:password, email:email })
+                    };
+                    fetch('/createNewUser', requestOptions)
+                    .then(res => {
+                        return res.json()
+                    }).then(data => {
+                        if(data.errorEmail)
+                            setEmailError(<p className="error">{data.errorEmail}</p>);
+                        if(data.errorUsername)
+                            setUsernameError(<p className="error">{data.errorUsername}</p>);
+                        if(data._id)
+                            History.push('/');                        
+                    })
+                    .catch(err => console.log(err));
+                }
 
             }
             else
             {
-                if(password || confirmPassword)
+                if(password!=="" && confirmPassword!=="")
                     setPasswordError(<p className="error">Passwords do not match</p>);
             } 
         }       
         else
         {
-            if(!username)
+            if(username==="")
                 setUsernameError(<p className="error">Enter Username</p>);
-            if(!password || !confirmPassword)
+            if(password==="" || confirmPassword==="")
                 setPasswordError(<p className="error">Enter Passwords</p>);
-            if(!email)
+            if(email==="")
                 setEmailError(<p className="error">Enter Email</p>);
             
         }

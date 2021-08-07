@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const cookie_parser = require('cookie-parser');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const jwtCookies = require('../models/createCookies');
 router.use(cookie_parser());
 
@@ -10,11 +12,11 @@ const Profiles = require("../models/profiles");
 router.post('/', async function(req, res){
     const username = req.body.username;
     const password = req.body.password;
-    console.log("username : ", username, "; password : ", password);
-    const user = await Profiles.find({username : username, password : password});
-    if(user.length!=0)
+    const user = await Profiles.findOne({username : username});
+    const result = await bcrypt.compare(password, user.password); 
+    if(result === true)
     {
-        const token = jwtCookies(user[0]._id);
+        const token = jwtCookies(user._id);
         console.log(user);
         res.cookie('jwt',token,{
             maxAge: 2 * 60 * 60 * 1000, 

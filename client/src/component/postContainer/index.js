@@ -71,7 +71,7 @@ export default function PostContainer(props)
                 History.push('/login');
             else
             {
-                if(data.voted=="success")
+                if(data.voted==="success")
                     setDownvotecount(downvotecount+1);
                 else
                     setDownvotecount(downvotecount-1);
@@ -86,8 +86,7 @@ export default function PostContainer(props)
         commentId:""
     };
     
-    const [comments, setComments] = useState([defaultComment]); 
-    console.log(comments);   
+    const [comments, setComments] = useState([defaultComment]);   
     useEffect(function(){
         getCommets(postId, setComments);
     },[]);    

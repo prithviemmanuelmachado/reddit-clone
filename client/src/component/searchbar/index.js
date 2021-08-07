@@ -16,10 +16,12 @@ export default function SearchBar(props)
         if(event.key === 'Enter')
         {
             //redirect to search page here
-            History.push('/search/'+searchTerm);
+            let term = searchTerm;
+            setSearchTerm("");
+            History.push('/search/'+term);
         }    
     }
     return<>
-        <input type='text' onChange={handleSearch} className={style.searchbar} placeholder={placeholder} onKeyDown={onKeyDown}/>        
+        <input type='text' onChange={handleSearch} className={style.searchbar} placeholder={placeholder} onKeyDown={onKeyDown} value={searchTerm}/>        
     </>
 }
